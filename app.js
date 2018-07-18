@@ -1,41 +1,23 @@
 const express = require('express');
+const request = require('request');
+const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const todos = [];
-const completed = [];
+app.get('/', (req, res) => res.render('index'));
 
-app.get('/', (req, res) => {
-  res.render('index', { todos, completed });
+app.get('/results', (req, res) => {
+  const searchTerm = req.query.search;
+  const url = `https://itunes.apple.com/search?term=${searchTerm}&limit=1`;
+  request(url, function(error, response, body) {
+    console.log('error:', error);
+    const data = JSON.parse(body);
+    console.log('body:', data);
+    res.render('results', { data });
+  });
 });
 
-app.post('/addTodo', (req, res) => {
-  //   if (todos.length <= 0) {
-  //     document.getElementById('top').style.display = 'none';
-  //   } else {
-  //     document.getElementById('top').style.display = 'block';
-  //   }
-  const newTodo = req.body.newTodo;
-  todos.push(newTodo);
-  res.redirect('/');
-});
-
-app.post('/removeTodo', (req, res) => {
-  const checked = req.body.check;
-  if (typeof checked === 'string') {
-    completed.push(checked);
-    todos.splice(todos.indexOf(checked), 1);
-  } else if (typeof checked === 'object') {
-    checked.forEach(check => {
-      completed.push(check);
-      todos.splice(todos.indexOf(check), 1);
-    });
-  }
-  res.redirect('/');
-});
-
-app.listen(3000, () => console.log('server is listening at port 3000'));
+app.listen(3000, () => console.log('serving is listening on port 3000'));
