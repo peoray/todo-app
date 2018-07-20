@@ -6,12 +6,13 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => res.render('index'));
 
 app.get('/results', (req, res) => {
   const searchTerm = req.query.search;
-  const url = `https://itunes.apple.com/search?term=${searchTerm}&limit=1`;
+  const url = `https://itunes.apple.com/search?term=${searchTerm}&entity=album`;
   request(url, function(error, response, body) {
     console.log('error:', error);
     const data = JSON.parse(body);
