@@ -1,14 +1,41 @@
-<% include partials/header %>
+<html>
+<head> 
+<title> ToDo App </title>
+ <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+ <link href="/styles.css" rel="stylesheet">
+</head>
 
-    <div class="container">
-        <div id="search" class="card card-body bg-light mb-2">
-            <h4 class="display-4">Search for your favorite artist song</h4>
-            <hr>
-            <form action="/results" method="GET" class="form-group">
-                <input type="text" class="form-control mb-3" placeholder="" name="search">
-                <button type="submit" class="btn btn-dark btn-block mt-4">Search</button>
-            </form>
-        </div>
+<body>
+<div class="container">
+<h2> A Simple ToDo List App </h2>
+
+<form action ="/addTodo" method="POST">
+
+<input type="text" name="newTodo" placeholder="add new todo">
+<button> Add Task </button>
+
+<h2> Added Task </h2>
+<% todos.forEach(todo => { %>
+<li>
+    <input type="checkbox" name="check" value="<%= todo %>" />
+    <%= todo %>
+</li>
+<% }) %>
+
+<button formaction="/removeTodo" type="submit" id="top"> Remove </button>
+</form>
+
+<h2> Completed task </h2>
+<% completed.forEach(complete => { %>
+<li>
+    <input type="checkbox" name="complete" checked>
+    <%= complete %>
+</li>
+<% }) %>
 
 
-<% include partials/footer %>
+
+</div>
+
+</body>
+</html>
