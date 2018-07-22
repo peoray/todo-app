@@ -19,3 +19,15 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+li {
+    list-style: none;
+}
+
+input[type='checkbox'] {
+    vertical-align: middle;
+}
+
+#top {
+    margin-top: 10px;
+}

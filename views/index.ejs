@@ -1,41 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head> 
-<title> ToDo App </title>
- <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
- <link href="/styles.css" rel="stylesheet">
+    <title> ToDo App </title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
 </head>
 
 <body>
-<div class="container">
-<h2> A Simple ToDo List App </h2>
 
-<form action ="/addTodo" method="POST">
+    <div class="container">
+        <h2> A Simple ToDo List App </h2>
 
-<input type="text" name="newTodo" placeholder="add new todo">
-<button> Add Task </button>
+        <form action ="/addTodo" method="POST">
+            <input type="text" name="newTodo" placeholder="add new todo">
+            <button> Add Task </button>
+            <h2> Added Task </h2>
 
-<h2> Added Task </h2>
-<% todos.forEach(todo => { %>
-<li>
-    <input type="checkbox" name="check" value="<%= todo %>" />
-    <%= todo %>
-</li>
-<% }) %>
+            <ul>
+                <!--Todo added by the user-->
+                <% todos.forEach(todo => { %>
+                    <li>
+                        <input type="checkbox" name="check" value="<%= todo %>" />
+                        <%= todo %>
+                    </li>
+                <% }) %>
+            </ul>
 
-<button formaction="/removeTodo" type="submit" id="top"> Remove </button>
-</form>
+            <button formaction="/removeTodo" type="submit" id="top"> Remove </button>
+        </form>
 
-<h2> Completed task </h2>
-<% completed.forEach(complete => { %>
-<li>
-    <input type="checkbox" name="complete" checked>
-    <%= complete %>
-</li>
-<% }) %>
-
-
-
-</div>
+        <h2> Completed task </h2>
+        <ul>
+            <!--Completed Todo removed by thee user-->
+            <% completed.forEach(complete => { %>
+                <li>
+                    <input type="checkbox" name="complete" checked>
+                    <%= complete %>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 
 </body>
 </html>
