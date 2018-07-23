@@ -1,5 +1,8 @@
 # To-do App
-### A simple NodeJs to-do list built with Node.js and Expres:bookmark_tabs:
+
+![App Preview](https://res.cloudinary.com/peoray/image/upload/v1532306125/node-todo_nr8o5b.gif)
+
+A simple NodeJs to-do list built with Node.js and Expres :bookmark_tabs:
 
 Nodejs application that let's you add and complete task on a single page, storing both new and completed task in a different array. This appllication makes use of:
 
