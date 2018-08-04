@@ -12,6 +12,8 @@ Nodejs application that let's you add and complete task on a single page, storin
 
 * Body-parser - This extracts the entire body portion of an incoming request stream and exposes it on `req.body` 
 
+Inspired by [missating](https://github.com/missating/nodejs-todo)
+
 How to run the app locally:
 
 1. Run <code> npm install </code> to install all needed dependencies
