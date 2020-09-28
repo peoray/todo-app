@@ -16,6 +16,8 @@ Inspired by [missating](https://github.com/missating/nodejs-todo)
 
 How to run the app locally:
 
+1. Clone the repo`git clone https://github.com/peoray/todo-app.git`
+
 1. Run <code> npm install </code> to install all needed dependencies
 
 1. Then start the server using `node app.js`
